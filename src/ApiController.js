@@ -8,7 +8,7 @@ export default {
 
 
     async login(email, senha) {
-        const url = `${ApiUrl}/`;
+        const url = `${ApiUrl}/login`;
         const response = await axios.post(url, {
             email: email, senha: senha
         }).catch(error => {

@@ -1,8 +1,7 @@
-import axios from 'axios';
-
-import Swal from "sweetalert2";
-const ApiUrl = '/api'; // usa o proxy do Netlify
-
+axios.post('/api/login', {
+  email: this.email,
+  senha: this.senha
+});
 
 export default {
 async login(email, senha) {

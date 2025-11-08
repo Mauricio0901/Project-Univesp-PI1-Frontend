@@ -2,16 +2,12 @@ import axios from 'axios';
 
 import Swal from "sweetalert2";
 const ApiUrl = '/api'; // usa o proxy do Netlify
-const url = `/api/login`;
-axios.post(url, {
-  nome: 'Mauricio',
-  email: 'mauricio@email.com'
-});
+
 
 export default {
- async login(email, senha) {
+async login(email, senha) {
   try {
-    const response = await axios.post('/api/login', { email, senha });
+    const response = await axios.post(`${ApiUrl}/login`, { email, senha });
     const token = response.data.token;
 
     localStorage.setItem('token', token);

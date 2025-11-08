@@ -2,7 +2,12 @@ import axios from 'axios';
 
 import Swal from "sweetalert2";
 
-const ApiUrl = 'http://localhost:84';
+const ApiUrl = 'https://petplann.infinityfreeapp.com';
+const url = 'https://petplann.infinityfreeapp.com/inserirCliente';
+axios.post(url, {
+  nome: 'Mauricio',
+  email: 'mauricio@email.com'
+});
 
 export default {
 

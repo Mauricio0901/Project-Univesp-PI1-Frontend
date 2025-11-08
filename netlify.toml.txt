@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/api/*"
+  to = "https://petplann.infinityfreeapp.com/:splat"
+  status = 200

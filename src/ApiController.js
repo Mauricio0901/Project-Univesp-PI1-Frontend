@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import Swal from "sweetalert2";
-
+const ApiUrl = '/api'; // usa o proxy do Netlify
 const url = `/api/login`;
 axios.post(url, {
   nome: 'Mauricio',
@@ -9,52 +9,41 @@ axios.post(url, {
 });
 
 export default {
-  async login(email, senha) {
-    const url = `${ApiUrl}/login`;
-
-    const response = await axios.post('/api/login', {
-      email: usuario.email,
-      senha: senha
-    }).catch(error => {
-      console.error('Erro ao tentar fazer login: ', error);
-      throw error;
-    });
-
+ async login(email, senha) {
+  try {
+    const response = await axios.post('/api/login', { email, senha });
     const token = response.data.token;
 
-    try {
-  const response = await axios.post('/api/login', {
-    email,
-    senha
-  });
+    localStorage.setItem('token', token);
 
-  const token = response.data.token;
-  localStorage.setItem('token', token);
+    Swal.fire({
+      icon: 'success',
+      title: 'Login feito com sucesso',
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+      willClose: () => {
+        window.location.href = '/agenda';
+      }
+    });
+  } catch (error) {
+    console.error('Erro ao tentar fazer login: ', error);
 
-  // redirecionamento ou alerta aqui
-} catch (error) {
-  console.error('Erro ao tentar fazer login: ', error);
-}
-    // redirecionamento ou alerta aqui
+    Swal.fire({
+      icon: 'error',
+      title: 'Erro ao fazer login!',
+      text: 'Verifique seu email e senha e tente novamente.'
+    });
 
-
-        Swal.fire({
-            icon: 'success',
-            title: 'Login feito com sucesso',
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 1500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer);
-                toast.addEventListener('mouseleave', Swal.resumeTimer);
-            },
-            willClose: () => {
-                window.location.href = '/agenda';
-            }
-        });
-    },
+    throw error;
+  }
+},
 
     async autenticarSenha(email, senha) {
         const url = `${ApiUrl}/senhaAcesso`;

@@ -1,5 +1,24 @@
 <template>
     <main>
+
+        <script>
+import ApiController from '../services/ApiController'; // ajuste o caminho conforme sua estrutura
+
+export default {
+  data() {
+    return {
+      email: '',
+      senha: ''
+    };
+  },
+  methods: {
+    async loginUsuario() {
+      await ApiController.login(this.email, this.senha);
+    }
+  }
+};
+</script>
+
         <div class="box">
             <div class="inner-box">
                 <!--Login-->

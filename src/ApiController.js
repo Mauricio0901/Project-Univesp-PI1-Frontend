@@ -22,7 +22,19 @@ export default {
 
     const token = response.data.token;
 
-    localStorage.setItem('token', token);
+    try {
+  const response = await axios.post('/api/login', {
+    email,
+    senha
+  });
+
+  const token = response.data.token;
+  localStorage.setItem('token', token);
+
+  // redirecionamento ou alerta aqui
+} catch (error) {
+  console.error('Erro ao tentar fazer login: ', error);
+}
     // redirecionamento ou alerta aqui
 
 

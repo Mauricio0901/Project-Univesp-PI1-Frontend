@@ -2,13 +2,13 @@ import axios from 'axios';
 
 import Swal from "sweetalert2";
 
-const ApiUrl = 'https://petplann.infinityfreeapp.com';
+const ApiUrl = 'http://localhost:84';
 
 export default {
 
 
     async login(email, senha) {
-        const url = `${ApiUrl}/login`;
+        const url = `${ApiUrl}/`;
         const response = await axios.post(url, {
             email: email, senha: senha
         }).catch(error => {

@@ -28,7 +28,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class=" col-md-12 col-sm-12">
+                                <div class=" col-12 col-sm-5">
                                     <div class="selectCampo">
                                         <label for="pet">Pet</label>
                                         <select v-model="agenda.animal_id" id="select-pet" class="selectPet">

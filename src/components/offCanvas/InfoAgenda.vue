@@ -13,6 +13,10 @@
     </div>
     <div class="offcanvas-body">
       <div>
+        <div class="animalDetalhes">
+          <div class="detalhesAnimal">
+            <h4>{{ agendaDados.nome_pet }}</h4>
+          </div>
         <div class="servicoDetalhes">
           <div class="detalhesTitulo">
             <h4>{{ agendaDados.nome_servico }}</h4>
@@ -72,6 +76,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

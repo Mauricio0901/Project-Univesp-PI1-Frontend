@@ -2,8 +2,7 @@ import axios from 'axios';
 
 import Swal from "sweetalert2";
 
-const ApiUrl = 'https://petplann.infinityfreeapp.com';
-const url = `${ApiUrl}/login`;
+const url = `/api/login`;
 axios.post(url, {
   nome: 'Mauricio',
   email: 'mauricio@email.com'
@@ -13,8 +12,8 @@ export default {
   async login(email, senha) {
     const url = `${ApiUrl}/login`;
 
-    const response = await axios.post(url, {
-      email: email,
+    const response = await axios.post('/api/login', {
+      email: usuario.email,
       senha: senha
     }).catch(error => {
       console.error('Erro ao tentar fazer login: ', error);

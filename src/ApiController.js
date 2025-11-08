@@ -3,7 +3,7 @@ import axios from 'axios';
 import Swal from "sweetalert2";
 
 const ApiUrl = 'https://petplann.infinityfreeapp.com';
-const url = '';
+const url = `${ApiUrl}/login`;
 axios.post(url, {
   nome: 'Mauricio',
   email: 'mauricio@email.com'
@@ -12,6 +12,7 @@ axios.post(url, {
 export default {
   async login(email, senha) {
     const url = `${ApiUrl}/login`;
+
     const response = await axios.post(url, {
       email: email,
       senha: senha
@@ -20,7 +21,8 @@ export default {
       throw error;
     });
 
-    const token = response.data;
+    const token = response.data.token;
+
     localStorage.setItem('token', token);
     // redirecionamento ou alerta aqui
 
@@ -217,7 +219,9 @@ export default {
     async deletarVinculo(cliente_id, animal_id) {
 
         const url = `${ApiUrl}/deletevinculo/${cliente_id}/${animal_id}`;
-        const response = await axios.delete(url, cliente_id, animal_id)
+        await axios.delete(url);
+        const response = await axios.delete(url,
+             cliente_id, animal_id)
             .catch(error => {
                 console.error('Erro ao tentar remover o vinculo: ', error);
                 throw error;

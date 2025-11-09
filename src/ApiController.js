@@ -6,17 +6,17 @@ const ApiUrl = '/api'; // usa o proxy do Netlify
 export default {
 async login(email, senha) {
   try {
-    const response = await axios.post(
-      `${ApiUrl}/login`,
-      new URLSearchParams({ email, senha }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('senha', senha);
+
+    const response = await axios.post('/api/login', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
       }
-    );
+    });
+
     const token = response.data.token;
-    
     localStorage.setItem('token', token);
 
     Swal.fire({
@@ -36,17 +36,18 @@ async login(email, senha) {
       }
     });
   } catch (error) {
-    console.error('Erro ao tentar fazer login: ', error);
+    console.error('Erro ao tentar fazer login:', error);
 
     Swal.fire({
       icon: 'error',
       title: 'Erro ao fazer login!',
-      text: 'Verifique seu email e senha e tente novamente.'
+      text: error.response?.data?.error || 'Verifique seu email e senha e tente novamente.'
     });
 
     throw error;
   }
 },
+
 
     async autenticarSenha(email, senha) {
         const url = `${ApiUrl}/senhaAcesso`;

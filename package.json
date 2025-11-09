@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && mkdir -p dist && cp ./netlify.toml ./dist/netlify.toml"
+    "build": "vue-cli-service build && node -e \"const fs=require('fs'),p=require('path');fs.copyFileSync(p.join(__dirname,'netlify.toml'),p.join(__dirname,'dist','netlify.toml'));\""
+
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.8",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
-    "@vue/cli-service": "~5.0.0"
+    "@vue/cli-service": "~5.0.0",
+    "copyfiles": "^2.4.1"
   }
 }

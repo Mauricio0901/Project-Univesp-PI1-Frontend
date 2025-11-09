@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && cp netlify.toml dist/"
+    "build": "vue-cli-service build && mkdir -p dist && cp ./netlify.toml ./dist/netlify.toml"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.8",

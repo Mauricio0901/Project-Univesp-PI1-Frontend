@@ -112,7 +112,7 @@ export default {
         }
     },
     methods: {
-        async login() {
+        async loginUsuario() {
             try {
                 await ApiController.login(this.email, this.senha);
                 localStorage.setItem('email', this.email);

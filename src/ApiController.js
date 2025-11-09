@@ -6,7 +6,7 @@ const ApiUrl = '/api'; // usa o proxy do Netlify
 export default {
 async login(email, senha) {
   try {
-    const response = await axios.post(`${ApiUrl}/login.php`, { email, senha });
+    const response = await axios.post(`${ApiUrl}/login`, { email, senha });
     const token = response.data.token;
 
     localStorage.setItem('token', token);

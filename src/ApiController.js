@@ -6,9 +6,17 @@ const ApiUrl = '/api'; // usa o proxy do Netlify
 export default {
 async login(email, senha) {
   try {
-    const response = await axios.post(`${ApiUrl}/login`, { email, senha });
+    const response = await axios.post(
+      `${ApiUrl}/login`,
+      new URLSearchParams({ email, senha }),
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    );
     const token = response.data.token;
-
+    
     localStorage.setItem('token', token);
 
     Swal.fire({

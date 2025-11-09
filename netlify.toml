@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/api/*"
-  to = "https://petplann.infinityfreeapp.com/:splat"
+  to = "https://petplann.infinityfreeapp.com/:splat?"
   status = 200
   force = true
   headers = { Access-Control-Allow-Origin = "*" }

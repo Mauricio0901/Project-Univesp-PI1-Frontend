@@ -6,7 +6,7 @@
             <div class="inner-box">
                 <!--Login-->
                 <div class="forms-wrap">
-                   <form @submit.prevent="loginUsuario" autocomplete="off" class="sign-in-form">
+                   <form @submit.prevent="login" autocomplete="off" class="sign-in-form">
                         <div class="logo">
                             <img src="../assets/img/PetPlann3.png" alt="easyclass">
                             
